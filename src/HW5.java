@@ -1,20 +1,16 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class HW6 {
-    static Graph graph = new Graph(0); //initialize graph object with 0 nodes
+public class HW5 {
 
-    
-
-    public static void main(String[] args) throws Exception {
-        buildGraph("mediumG.txt");
-        // buildGraph("largeG.txt");
-        graph.printAdjMatrix();
-    }
-
-    public static void buildGraph(String filename) {
+    public static void main(String[] args) {
+        String filename = "mediumG.txt";
         try {
+            long numberOfLines = Files.lines(Paths.get(filename)).count();
+            Graph graph = new Graph((int)numberOfLines); //initialize graph object
             BufferedReader reader = new BufferedReader(new FileReader(filename)); //initialize reader object
             String line;
             int lineCount = 0; //initialize line count
@@ -34,6 +30,8 @@ public class HW6 {
                 }
             }
             reader.close();
+            graph.printAdjList();
+            graph.BFS(169);
         } catch (IOException e) {
             e.printStackTrace();
         }
