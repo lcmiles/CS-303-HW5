@@ -9,7 +9,15 @@ public class Graph {
     private int edges; //number
     private List<List<Integer>> adjList;
 
-
+    /*
+    Description: This is the constructor for the graph object
+    Parameters:
+    int nodes - The number of nodes the graph will contain
+    Returns: Nothing
+    Sources:
+    https://chat.openai.com/share/8b4c2e60-b4e3-4b2a-909b-4a3300ec4287
+    https://www.youtube.com/watch?v=X1LdtRW88c0
+    */
     public Graph(int nodes) { //constructor for Graph object
         this.vertices = nodes; //initializes the number of vertices as the number of nodes
         this.edges = 0; //initializes the number of edges to 0
@@ -25,6 +33,9 @@ public class Graph {
     int node1 - A node read from the text file to be connected to node2 via an edge
     int node2 - A node read from the text file to be connected to node1 via an edge
     Returns: Nothing
+    Sources:
+    https://chat.openai.com/share/8b4c2e60-b4e3-4b2a-909b-4a3300ec4287
+    https://www.youtube.com/watch?v=X1LdtRW88c0
     */
     public void addEdge(int node1, int node2) {
         adjList.get(node1).add(node2); //gets the adjacency list for node1 and adds node2 to that list
@@ -37,6 +48,8 @@ public class Graph {
     Description: This function iterates through the list of adjacency lists for each node, appending each element to a string and printing each of them to form an adjacency list for the graph
     Parameters: None
     Returns: Nothing
+    Sources:
+    https://www.youtube.com/watch?v=X1LdtRW88c0
     */
     public void printAdjList() {
         StringBuilder string = new StringBuilder(); //initialize StringBuilder object
@@ -75,13 +88,16 @@ public class Graph {
     Description: This function uses breadth-first search to traverse the graph and print each node
     Parameters: None
     Returns: Nothing
+    Sources:
+    https://chat.openai.com/share/3615b67f-45b3-411b-80d5-4ac6984224e1
+    https://stackoverflow.com/questions/5262308/how-do-implement-a-breadth-first-traversal
     */
     public void BFS(int startNode) {
         boolean[] visited = new boolean[vertices]; //matrix containing boolean values for each node; 1 means visited, 0 means unvisited
         Queue<Integer> queue = new LinkedList<>(); //creates a queue of integers using a LinkedList as the underlying data structure to queue neighbors 
 
-        visited[startNode] = true;
-        queue.add(startNode);
+        visited[startNode] = true; //set the startNode variable to visited in the boolean matrix as it is the starting node
+        queue.add(startNode); //add starting node to the queue
 
         System.out.print("Breadth-First Search starting from node " + startNode + ": ");
         while (!queue.isEmpty()) { //while the queue is not empty
@@ -109,6 +125,5 @@ public class Graph {
         } else {
             System.out.println(); //move to the next line after printing the BFS traversal
         }
-        System.out.println("");
     }
 }

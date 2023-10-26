@@ -11,6 +11,9 @@ public class HW5 {
     Parameters:
     String[] args - Runtime arguments
     Returns: Nothing
+    Sources:
+    https://stackoverflow.com/questions/26448352/counting-the-number-of-lines-in-a-text-file-java
+    https://www.youtube.com/watch?v=X1LdtRW88c0
     */
     public static void main(String[] args) {
         String filename = "mediumG.txt"; //initialize filename string variable
@@ -37,13 +40,11 @@ public class HW5 {
             }
             reader.close();
             graph.printAdjList(); //call printAdjList() to print the adjacency list representation of the graph
-            graph.BFS(10); //call BFS on following nodes
-            // graph.BFS(100);
-            // graph.BFS(1000);
-            // graph.BFS(1000);
-            // graph.BFS(10000);
-            // graph.BFS(100000);
-            // graph.BFS(1000000);
+            long timeInit = System.nanoTime(); //records initial system time in nanoseconds
+            graph.BFS(100); //call BFS on following nodes
+            long timeFinal = System.nanoTime(); // records final system time in nanoseconds
+            long time = timeFinal - timeInit; //calculates time taken for BFS algorithm
+            System.out.println("Breadth-First Search Time: " + time + " nanoseconds, " + (float)time/1000000 + " milliseconds, or " + (float)time/1000000000 + " seconds");
         } catch (IOException e) {
             e.printStackTrace();
         }
